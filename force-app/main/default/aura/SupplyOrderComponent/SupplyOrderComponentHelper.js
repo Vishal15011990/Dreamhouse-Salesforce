@@ -1,0 +1,5 @@
+({
+    getval:function(component) {
+    
+    }
+})

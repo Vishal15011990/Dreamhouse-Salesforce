@@ -1,0 +1,3 @@
+<aura:component implements="force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+    <c:ContactNewComponent></c:ContactNewComponent>
+</aura:component>

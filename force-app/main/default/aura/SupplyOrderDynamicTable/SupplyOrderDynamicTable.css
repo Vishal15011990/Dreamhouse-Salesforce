@@ -1,0 +1,79 @@
+.THIS #newexpenseform {
+    position: relative;
+    top: 30px;
+    font-size: 30px;
+    font-weight: lighter;
+}
+.THIS #cust_style_divName{
+    height: 83px;
+    top: -17px;
+    position: relative;
+}
+.THIS #cust_stylediv{
+    width: 957px;
+    height: 311px;
+}
+.THIS #cust_style_dob{
+    position: relative;
+    top: -21px;
+    left: 11px;
+}
+.THIS .cust_style_accselect{
+    position: relative;
+    top: 6px;
+    display: none;
+}
+.THIS .cust_style_select{
+    display:none;
+  
+}
+.THIS #cust_style_btnaddline{
+    position: relative;
+    left: 61px;
+    top: 19px;
+}
+
+.THIS #cust_style_Neworder{
+    position: relative;
+    direction: rtl;
+    left: 752px;
+}
+
+.THIS #cust_style_desc{
+    top: -5px;
+    position: relative;
+}
+.THIS #cust_style_form{
+    position: relative;
+    top: 48px;
+}
+.THIS #cust_style_grandtotal{
+    background: white;
+    height: 39px;
+}
+.THIS #cust_style_tr{
+    height: 50px;
+}
+.THIS a{
+    text-decoration: none;
+    color: black;
+}
+.THIS .slds-hint-parent{
+    height:55px;
+}
+.THIS tr:hover td{
+    background-color: azure;
+}
+.THIS.show{
+    display:none;
+}
+.THIS .cust_style_para
+{
+    top: 10px;
+    position: relative;
+    float: right;
+    right: 11px;
+}
+.THIS .customCSSClass{
+    display:none;
+}

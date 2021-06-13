@@ -1,0 +1,6 @@
+<aura:component controller="myController">
+    <aura:handler event="aura:systemError" action="{!c.showSystemError}"/>
+    <aura:attribute name="response" type="Aura.Action"/>
+    <!-- Other component markup here -->
+    <lightning:button aura:id="trigger" label="Trigger error" onclick="{!c.trigger}"/>
+</aura:component>

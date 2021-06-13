@@ -1,0 +1,19 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  },
+  "launch": {
+
+
+    "configurations": [],
+    "compounds": []
+  },
+  // Is git enabled
+  "git.enabled": true,
+
+  // Path to the git executable
+  "git.path": "C:\\Program Files\\Git\\bingit.exe"
+
+}

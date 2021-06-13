@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+    <aura:registerEvent name="NewEventComponent" type="c:NewComponentEvent"></aura:registerEvent>
+    <aura:attribute name="GetAccount" type="Account" default="{'sobjectType':'Account','Name':'ItsMe'}"/>       
+
+    <lightning:input  name="Accounttext"  value="{!v.GetAccount.Name}"></lightning:input>
+    <br/>
+    <lightning:button label="Submit" iconName="utility:edit" iconPosition="left"  variant="destructive" onclick="{!c.firecomponentevent}" ></lightning:button>
+</aura:component>

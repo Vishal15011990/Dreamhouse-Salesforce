@@ -1,0 +1,7 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+    <aura:method name="childauramethod" action="{!c.myAction}" access="public"></aura:method>
+
+    <aura:attribute name="message" type="string" default="This is Demo of Aura Method"/>
+
+    {!v.message}
+</aura:component>

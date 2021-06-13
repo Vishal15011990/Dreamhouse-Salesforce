@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableforAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+    <lightning:button variant="Brand" label="Clic Me"  onclick="{!c.addMe}" />
+    {!v.body}                                               <!--Whenever we want to Showcase the data dynamically we need to use this-->
+</aura:component>

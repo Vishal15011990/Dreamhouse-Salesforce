@@ -1,0 +1,13 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+
+    <aura:attribute name="parentattr" type="string" default="This is my parent attr"/>
+    <br/>
+    <br/>
+    <c:ChildAuraMethodComponent  aura:id="childauramethodid" ></c:ChildAuraMethodComponent>
+    <br/>
+    <br/>
+    <lightning:button variant="brand" label="Submit"  onclick="{!c.jsAction}" />
+    <br/>
+    <br/>
+    {!v.parentattr}
+</aura:component>

@@ -1,0 +1,78 @@
+<aura:component controller="Contactlist"  implements="flexipage:availableForAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="NewAttr" type="string"></aura:attribute>
+    <aura:attribute name="NewAttr2" type="string"></aura:attribute>
+    <aura:attribute name="result" type="integer"></aura:attribute>
+    <aura:attribute name="isCalculated" type="boolean" default="false" ></aura:attribute>
+
+    <!-- <aura:attribute name="Account" type="Account[]"></aura:attribute> -->
+    <aura:attribute name="Contactlist" type="contact[]"></aura:attribute>
+
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}' /> <!--System Event To Fire Some Logic-->
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    
+    <div class="slds-align_absolute_center">
+        <h1 class="slds-align_absolute-center slds-text-heading_large">
+            Welcome to Dashboard Component
+        </h1>
+    </div>
+                <!-- {!v.NewAttr} --> 
+            <!-- <force:canvasApp developerName="MyCanvasApp" namespacePrefix="myNamespace" /> -->
+
+                                                            <!--Basic Component Part Start-->
+<!-- 
+    <div>
+        <h1 class="header">
+
+            <lightning:input  name="Number1" placeholder=" Enter Something"  value="{!v.NewAttr}"></lightning:input>
+            <br/>
+            <lightning:input  name="Number2" placeholder=" Enter Something"  value="{!v.NewAttr2}"></lightning:input>
+            <br/>
+            <lightning:button  variant="brand" label="Do Something" iconName="utility:edit" iconPosition="left" onclick="{!c.AddNumber}" ></lightning:button>
+            <br />
+            <br />
+
+            Multiplication of {!v.NewAttr} and {!v.NewAttr2}  : {!mult(v.NewAttr,v.NewAttr2)}
+            <br/>
+            <br/>
+            <aura:if isTrue="{!v.isCalculated}"> 
+                Addition of {!v.NewAttr} and {!v.NewAttr2}  :{!v.result}
+            </aura:if>
+        </h1>
+    </div> -->
+                                                            <!--Basic Component Part End-->
+
+                                                            <!--Nested Component Part Start-->
+<div>
+    <c:ContactNewComponent accid="{!v.recordId}"></c:ContactNewComponent>
+</div>
+                                                            <!--Nested Component Part End-->
+                                        <!--Showing Data of Contact Object Using aura iteration and System Event Start-->
+
+        
+        <div class="slds-p-around_small">
+            <div class="slds-grid slds-wrap">
+                    <aura:iteration items="{!v.Contactlist}" var="con">
+                        <br/><br/>
+                        <div class="slds-col slds-size_1-of-3">
+                            <lightning:card footer="{!con.Email}" title="{!con.LastName}">
+                                <aura:set attribute="actions">
+                                    <lightning:button label="View Detail" name="{!con.Id}" onclick="{!c.redirect}"/>
+                                </aura:set>
+                                <p class="slds-p-horizontal_small">
+                                    {!con.recordid} &nbsp;&nbsp;&nbsp;&nbsp;{!con.Phone}
+                                    {!con.FirstName} &nbsp;&nbsp;&nbsp;&nbsp;{!con.LastName}
+                                </p>
+                            </lightning:card>
+                        </div>
+                    </aura:iteration>
+                
+            </div>
+        </div>
+        
+
+                                        <!--Showing Data of Contact Object Using aura iteration and System Event End-->
+
+
+
+
+</aura:component>

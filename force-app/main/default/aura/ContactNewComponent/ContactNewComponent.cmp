@@ -1,0 +1,18 @@
+<aura:component controller="Contactlist">
+
+    <aura:attribute name="accid" type="string"></aura:attribute>
+    <aura:attribute name="insertcontact" type="Contact" default="{sobjectname:'contact',LastName:'',Email:'',Phone:''}"/>   
+
+    <div>
+        <h1 class="header">
+
+            <lightning:input  name="Name" placeholder=" Enter Name"  value="{!v.insertcontact.LastName}"></lightning:input>
+            <br/>
+            <lightning:input  name="Phone" type="tel" placeholder=" Enter Phone"  value="{!v.insertcontact.Phone}"></lightning:input>
+            <br/>
+            <lightning:input  name="Email" placeholder=" Enter Email"  value="{!v.insertcontact.Email}"></lightning:input>
+            <br/>
+            <lightning:button  variant="brand" label="InsertContact" iconName="utility:edit" iconPosition="left" onclick="{!c.AddContact}" ></lightning:button>
+        </h1>
+    </div>
+</aura:component>

@@ -1,0 +1,109 @@
+<aura:component controller="SupplyOrderSearchAccount" implements="force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome">
+
+  <aura:handler name="init" value="{!this}" action="{!c.jsAction}" />
+
+  <aura:attribute name="todaysDate" type="Object" />
+  <aura:attribute name="Accountlist" type="Object" />
+  <aura:attribute name="DealerList" type="string" />
+  <aura:attribute name="AccountName" type="string" />
+  <aura:attribute name="setvalue" type="boolean" default='true' />
+  <aura:attribute name="dealerId" type="string"></aura:attribute>
+  <aura:attribute name="GrandTotal" type="integer" />
+  <aura:attribute name="ContractList" type="string[]"/>
+  <aura:attribute name="ContraBool" type="boolean" default="false"/>
+
+  <aura:attribute name="DealerProductlist" type="Dealer_Product_Line_Items__c[]"/>
+  <aura:attribute name="MyColumns" type="List"/>
+
+
+  <div aria-labelledby="newexpenseform">
+    <fieldset class="slds-box slds-theme_default slds-container_large" id="cust_stylediv" onclick="{!c.hideselect}">
+      <legend id="newexpenseform" class="slds-text-heading_medium slds-p-vertical_medium">
+        Supply Order
+      </legend>
+      <form class="slds-form_stacked" id="cust_style_form">
+
+        <div class="slds-grid">
+          <div class="slds-col slds-size_1-of-2" id="cust_style_divName">
+            <span onkeypress="{!c.keyCheck}">
+              <label>Dealer Name</label>
+              <input aura:id="DealerName" placeholder="Enter Dealer Name or Number"
+                class="slds-input slds-combobox__input slds-has-focus" id="{!v.dealerId}" value='{!v.AccountName}'
+                aria-controls="listbox-id-4" autocomplete="off"></input>
+              <span class="cust_style_accselect" aura:id="showlist">
+                <div id="listbox-id-4" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox">
+                  <div class="">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                      <aura:iteration items="{!v.Accountlist.lstAccount}" var="acc">
+                        <li role="presentation" class="slds-listbox__item" data-id="{!acc.Id}" data-value="{!acc.Name}"
+                          onclick="{!c.optionClickHandler}">
+                          <div id="{!acc.Id}"
+                            class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                            role="option">
+                            <span class="slds-media__figure slds-listbox__option-icon"></span>
+                            <span class="slds-media__body">
+                              <span class="slds-truncate" title="Accounts">{!acc.Name}</span>
+                            </span>
+                          </div>
+                        </li>
+                      </aura:iteration>
+                    </ul>
+                  </div>
+                </div>
+              </span>
+            </span>
+          </div>
+
+          <div class="slds-col slds-size_1-of-2" id="cust_style_dob">
+            <lightning:input type="date" value="{!v.todaysDate}" label="Order Date" onchange="{!c.dateController}" />
+          </div>
+        </div>
+
+        <div class="slds-grid" id="cust_style_desc">
+          <div class="slds-col slds-size_1-of-2">
+            <label class="slds-form-element__label">Dealer Product</label>
+                <select name="select1" label="Dealer Product" required="true" id="prodselect" class="slds-select">
+                    <option value="">-- Select Dealer Product --</option>
+                    <aura:iteration items="{!v.DealerList.lstDealerProduct}" var="dprod">
+                        <option value="{!dprod.Id}">{!dprod.Name}</option>
+                    </aura:iteration>
+                </select>
+          </div>
+          <div class="slds-col slds-size_1-of-2" id="cust_style_btnaddline">
+            <lightning:button class="slds-button slds-button_success" disabled="{!v.setvalue}" onclick="{!c.fetchitem}">
+              Add Line Item
+            </lightning:button>
+          </div>
+        </div>
+
+      </form>
+    </fieldset>
+  </div>
+
+
+  <br />
+  <br />
+
+  <div aura:id="showdata">
+        <lightning:datatable keyField="Id" 
+                             data="{!v.DealerProductlist}" 
+                             columns="{!v.MyColumns}" 
+                             hideCheckboxColumn="true"
+                             oncellchange="{! c.saveInline }"
+                             aura:id="datarecord" 
+                             suppressBottomBar="true" />
+    <div id="cust_style_grandtotal">
+        <p aura:id="getGrand" class="cust_style_para">Grand Total :{!v.GrandTotal}</p>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="slds-col slds-size_1-of-2" aura:id="hidebutton">
+    <button class="slds-button slds-button_success" id="cust_style_Neworder" onclick="{!c.createcontract}">
+      Add New Order
+    </button>
+  </div>
+
+  </aura:component>
