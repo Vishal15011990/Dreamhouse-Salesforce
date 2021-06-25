@@ -136,40 +136,5 @@
         component.set('v.GrandTotal',total);
         component.find("datarecord").set("v.draftValues",null);
         
-    }
-    // createcontract: function(component,event,helper){
-       
-
-    //     var getSupplyorderdetail=component.get('v.DealerProductlist');
-
-    //     var actionContract=component.get('c.createnewContract');
-      
-    //     actionContract.setParams({
-           
-    //     });
-    //     actionContract.setCallback(this,function(response){
-    //         var stat=response.getState();
-           
-    //         var contra=component.get('v.ContractList');
-    //         var responseResult=response.getReturnValue();
-    //         var nwlst=[];
-    //         for(var i=0;i<responseResult.length;i++)
-    //         {
-               
-    //           var space = responseResult[i].Name;
-
-    //           nwlst.push(space);
-
-    //         }
-    //         console.log(JSON.stringify(nwlst));
-    //         component.set('v.ContraBool', true);
-    //         console.log(component.get('v.ContraBool'));
-    //         component.set('v.ContractList', nwlst);
-    //         //$A.get('e.force:refreshView').fire();
-    //     });
-    //     alert("Data Inserted");
-    //     $A.enqueueAction(actionContract,false);
-    // },
-
-    
+    }  
 })
