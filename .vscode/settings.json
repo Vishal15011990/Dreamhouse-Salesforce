@@ -14,6 +14,17 @@
   "git.enabled": true,
 
   // Path to the git executable
-  "git.path": "C:\\Program Files\\Git\\bingit.exe"
+  "git.path": "C:\\Program Files\\Git\\bingit.exe",
+  "svn.path": "C:\\Program Files\\TortoiseSVN\\bin",
+  "[json]": {
+
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": [
+      "document"
+    ]
+  }
 
 }

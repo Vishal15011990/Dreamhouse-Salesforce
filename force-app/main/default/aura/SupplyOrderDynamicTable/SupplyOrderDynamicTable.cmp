@@ -18,7 +18,7 @@
 
   <div aria-labelledby="newexpenseform">
     <fieldset class="slds-box slds-theme_default slds-container_large" id="cust_stylediv" onclick="{!c.hideselect}">
-      <legend id="newexpenseform" class="slds-text-heading_medium slds-p-vertical_medium">
+      <legend id="newexpenseform" class="slds-text-heading_medium slds-var-p-vertical_mediumdium">
         Supply Order
       </legend>
       <form class="slds-form_stacked" id="cust_style_form">
