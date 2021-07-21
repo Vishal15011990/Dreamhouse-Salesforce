@@ -1,0 +1,76 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-08-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   07-08-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component implements="flexipage:availableforAllPageTypes,flexipage:availableforRecordHome,force:hasRecordId" access="global">
+
+    <aura:attribute name="Account" type="Object"/>
+    <aura:attribute name="Accountrecord" type="Object"/>
+    <aura:attribute name="recordSaveError" type="string"/>
+
+                                                    
+                                                        <!-- View By Lightning Data Service and Display a header with details about the record Start -->
+    <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}" targetRecord="{!v.Account}" targetFields="{!v.Accountrecord}" targetError="{!v.Accounterror}" mode="VIEW" fields="Name,Type"></force:recordData>
+
+    <div class="slds-box">
+        <div class="slds-text-heading_medium">
+            Load Account - Data Service
+        </div>                 
+
+        <div class="slds-form--stacked slds-tile">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label"  >Name: </label>
+                <div class="slds-form-element__control">
+                  <ui:outputText class="slds-input" value="{!v.Accountrecord.Name}" />
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" >Type : </label>
+                <div class="slds-form-element__control">
+                  <ui:outputTextArea class="slds-input" value="{!v.Accountrecord.Type}"  />
+                </div>
+            </div>
+        </div>
+    </div>
+                                                        <!--View By Lightning Data Service Display a header with details about the record End-->
+
+                                                    <!-- Edit By Lightning Data Service and Display a header with details about the record Start -->
+
+    <force:recordData aura:id="accrecord" layoutType="FULL" recordId="{!v.recordId}" targetRecord="{!v.Account}" targetFields="{!v.Accountrecord}" targetError="{!v.Accounterror}" mode="EDIT" fields="Name,Type" recordUpdated="{!c.recordUpdated}"></force:recordData>
+    <div class="slds-box">
+        <div class="slds-text-heading_medium">
+            Edit Account - Data Service
+        </div>
+
+        <div class="slds-form--stacked slds-tile">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label"  >Name: </label>
+                <div class="slds-form-element__control">
+                <ui:inputText aura:id="recordName"  class="slds-input"  value="{!v.Accountrecord.Name}" required="true"/>
+                </div>
+            </div>
+             <div class="slds-form-element">
+                 <label class="slds-form-element__label"  >Type: </label>
+                 <div class="slds-form-element__control">
+                <ui:inputText aura:id="companyEmail"  class="slds-input"   value="{!v.Accountrecord.Type}"   required="true"/>
+                 </div>
+            </div>
+            <div class="slds-form-element">
+               <ui:button aura:id="saveAccount" buttonTitle="Save Account" class="button" label="Save Account" press="{!c.saveAccount}"/>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!not(empty(v.recordSaveError))}">
+        <br />
+        <div class="error slds-box">
+            {!v.recordSaveError}
+        </div>
+    </aura:if>
+                                                    <!-- Edit By Lightning Data Service and Display a header with details about the record End -->
+</aura:component>

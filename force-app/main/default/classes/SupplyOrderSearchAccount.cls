@@ -13,7 +13,7 @@ public with sharing class SupplyOrderSearchAccount {
             {
                throw new CustomHandleException('Exception Occured Due to No Account Found');
             }
-        } 
+        }
         catch (CustomHandleException ex) {
             System.debug(ex.getMessage());
         }

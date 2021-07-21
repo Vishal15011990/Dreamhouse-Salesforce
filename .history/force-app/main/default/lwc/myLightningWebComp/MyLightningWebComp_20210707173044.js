@@ -1,0 +1,19 @@
+import { LightningElement, api } from 'lwc';
+
+export default class MyLightningWebComp extends LightningElement {
+
+    @api firstName; lastName;
+
+    handleChange(event) {
+        const field = event.target.name;
+        if (field === 'firstName') {
+            this.firstName = event.target.value;
+        } else if (field === 'lastName') {
+            this.lastName = event.target.value;
+        }
+    }
+
+    get uppercasedFullName() {
+        return `${this.firstName} ${this.lastName}`.trim().toUpperCase();
+    }
+}

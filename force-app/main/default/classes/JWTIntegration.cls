@@ -86,7 +86,6 @@ public with sharing class JWTIntegration {
 
         string token = encodedJWTHeader+'.'+encodedJWTBody;
         system.debug('***token=>'+token);
-        
 
         //step 6 - sign with certificate - RSA-SHA256
 

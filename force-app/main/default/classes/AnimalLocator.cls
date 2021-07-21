@@ -1,19 +1,42 @@
+/**
+ * @description       : 
+ * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+ * @group             : 
+ * @last modified on  : 07-07-2021
+ * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+ * Modifications Log 
+ * Ver   Date         Author                               Modification
+ * 1.0   07-07-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+**/
+
+
 public with sharing class AnimalLocator {
 
-    public static String  getAnimalNameById(Integer id){
-        String res;
-        Http h =new Http();
-        HttpRequest req=new HttpRequest();
-        req.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals/'+id);
-        req.setMethod('GET');
-        req.setHeader('Content-Type','application/json');
-        HttpResponse response=h.send(req);
-        if(response.getStatusCode()==200)
+
+  public static String getAnimalNameById(Integer id)
+      {
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals/'+id);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+          String strResp = '';
+           system.debug('******response '+response.getStatusCode());
+           system.debug('******response '+response.getBody());
+        // If the request is successful, parse the JSON response.
+        if (response.getStatusCode() == 200) 
         {
-            Map<String,Object> results=(Map<String,Object>)JSON.deserializeUntyped(response.getBody());
-            Object animals=(Object)results.get('name');
-            res=string.valueOf(animals);
+            // Deserializes the JSON string into collections of primitive data types.
+           Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            // Cast the values in the 'animals' key as a list
+           Map<string,object> animals = (map<string,object>) results.get('animal');
+            System.debug('Received the following animals:' + animals );
+            strResp = string.valueof(animals.get('name'));
+            System.debug('strResp >>>>>>' + strResp );
         }
-        return res;
-    }
+        return strResp ;
+   }
+  
+
+
 }
